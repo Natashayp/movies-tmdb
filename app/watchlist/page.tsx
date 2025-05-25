@@ -9,7 +9,7 @@ const WatchlistPage = async () => {
         <div className="container">
             <h1 className="text-xl font-bold mb-6">Your Watchlist</h1>
             {watchlist.length === 0 ? (
-                <p>Mymymy watchlist is empty.</p>
+                <p>MYMYMY watchlist is empty.</p>
             ) : (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
                     {watchlist.map((movie) => (
