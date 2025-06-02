@@ -3,11 +3,12 @@ export default async function HomePage() {
 
   try {
     const res = await fetch(
-      https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY},
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
       {
-        cache: 'no-store',
+      cache: 'no-store',
       }
-    );
+  );
+
 
     if (!res.ok) throw new Error("TMDB fetch failed");
 
