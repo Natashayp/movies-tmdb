@@ -1,41 +1,48 @@
 {
-    "name": "nagorik-technical-challenge",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev --turbopack",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
-        "shadcn": "npx shadcn add"
-    },
-    "dependencies": {
-        "@hookform/resolvers": "^3.9.0",
-        "@radix-ui/react-slot": "^1.1.0",
-        "class-variance-authority": "^0.7.0",
-        "clsx": "^2.1.1",
-        "dayjs": "^1.11.13",
-        "next": "^15.0.1",
-        "next-themes": "^0.3.0",
-        "react": "^19.0.0-rc-69d4b800-20241021",
-        "react-dom": "^19.0.0-rc-69d4b800-20241021",
-        "react-hook-form": "^7.53.1",
-        "react-hot-toast": "^2.4.1",
-        "react-icons": "^5.3.0",
-        "react-intersection-observer": "^9.13.1",
-        "swiper": "^11.1.14",
-        "tailwind-merge": "^2.5.4",
-        "tailwindcss-animate": "^1.0.7",
-        "zod": "^3.23.8"
-    },
-    "devDependencies": {
-        "@types/node": "^20",
-        "@types/react": "^18",
-        "@types/react-dom": "^18",
-        "eslint": "^8",
-        "eslint-config-next": "15.0.1",
-        "postcss": "^8",
-        "tailwindcss": "^3.4.1",
-        "typescript": "^5"
-    }
+  "name": "nagorik-technical-challenge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start -p 8080",
+    "lint": "next lint",
+    "shadcn": "npx shadcn add",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "sonar": "node sonar.js"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "next": "^15.0.1",
+    "next-themes": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.53.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.3.0",
+    "react-intersection-observer": "^9.13.1",
+    "swiper": "^11.1.14",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "15.0.1",
+    "jest": "^29.7.0",
+    "postcss": "^8.0.0",
+    "sonarqube-scanner": "^4.3.0",
+    "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.3.4",
+    "typescript": "^5.0.0"
+  }
 }

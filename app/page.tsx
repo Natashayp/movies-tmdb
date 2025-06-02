@@ -1,23 +1,37 @@
-import { getMovies } from '@/actions/movies';
-import InfiniteMovies from '@/components/InfiniteMovies';
-import MovieCard from '@/components/MovieCard';
+export const dynamic = "force-dynamic";
 
-export const revalidate = 60;
+export default async function HomePage() {
+  let movies = [];
 
-const Home = async () => {
-    const movies = await getMovies(1);
-
-    return (
-        <div className="container">
-            <h1 className="text-xl font-bold mb-6">Popular Movies</h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
-                {movies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
-            </div>
-            <InfiniteMovies />
-        </div>
+  try {
+    const res = await fetch(
+      https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY},
+      {
+        cache: 'no-store',
+      }
     );
-};
 
-export default Home;
+    if (!res.ok) throw new Error("TMDB fetch failed");
+
+    const data = await res.json();
+    movies = data.results || [];
+  } catch (error) {
+    console.error("⚠ Failed to fetch movies:", error);
+    movies = [];
+  }
+
+  return (
+    <main>
+      <h1>Movie List</h1>
+      {movies.length === 0 ? (
+        <p>Data tidak tersedia.</p>
+      ) : (
+        <ul>
+          {movies.map((movie: any) => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      )}
+    </main>
+  );
+}

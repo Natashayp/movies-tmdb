@@ -1,29 +1,30 @@
-import { getWatchlistProducts } from '@/actions/watchlist';
-import MovieCard from '@/components/MovieCard';
-import MovieCardWatchlistWrapper from '@/components/MovieCardWatchlistWrapper';
+export const dynamic = "force-dynamic";
 
-const WatchlistPage = async () => {
-    const watchlist = await getWatchlistProducts();
+export default async function WatchlistPage() {
+  let watchlist = [];
 
-    return (
-        <div className="container">
-            <h1 className="text-xl font-bold mb-6">Your Watchlist</h1>
-            {watchlist.length === 0 ? (
-                <p>MYMYMY watchlist is empty.</p>
-            ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
-                    {watchlist.map((movie) => (
-                        <MovieCardWatchlistWrapper
-                            movieId={movie.id}
-                            key={movie.id}
-                        >
-                            <MovieCard movie={movie} />
-                        </MovieCardWatchlistWrapper>
-                    ))}
-                </div>
-            )}
-        </div>
-    );
-};
+  try {
+    const res = await fetch("https://your-backend-api.com/api/watchlist", {
+      cache: 'no-store',
+    });
+    watchlist = await res.json();
+  } catch (err) {
+    console.error("⚠ Failed to fetch watchlist:", err);
+    watchlist = [];
+  }
 
-export default WatchlistPage;
+  return (
+    <div>
+      <h1>Watchlist</h1>
+      {watchlist.length === 0 ? (
+        <p>Tidak ada film dalam watchlist.</p>
+      ) : (
+        <ul>
+          {watchlist.map((movie: any) => (
+            <li key={movie.id}>{movie.title}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
